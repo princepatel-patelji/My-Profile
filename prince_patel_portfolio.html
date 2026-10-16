@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Patel | Fast, Affordable Web & Digital Solutions — Lucknow, India</title>
+    <meta name="description" content="Portfolio of Prince Patel — BCA student, CRM Support Executive, and Web Developer building fast business websites, custom web tools, Web-to-APK apps, and Excel + AI dashboards.">
+    <meta name="keywords" content="Prince Patel, Web Developer Lucknow, Small Business Website India, Matrix Calculator, Number Guessing Game, BCA Portfolio, CRM Support Executive, Web to APK">
+    <meta name="author" content="Prince Patel">
+    
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Prince Patel — Web & Digital Solutions">
+    <meta property="og:description" content="Elevate your small business with fast, affordable websites, custom web tools, mobile APK conversions, and CRM tech support.">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Google Fonts: Inter, Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Three.js for 3D Interactive Cyber-Chip in Hero -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            teal: '#14b8a6',
+                            indigo: '#6366f1',
+                            gold: '#f59e0b',
+                            dark: '#090d16',
+                            card: '#111827',
+                        }
+                    },
+                    backgroundImage: {
+                        'brand-gradient': 'linear-gradient(135deg, #14b8a6 0%, #6366f1 52%, #f59e0b 100%)',
+                        'brand-gradient-subtle': 'linear-gradient(135deg, rgba(20,184,166,0.14) 0%, rgba(99,102,241,0.14) 52%, rgba(245,158,11,0.14) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Design Tokens & Glassmorphism Utilities */
+        :root {
+            --brand-teal: #14b8a6;
+            --brand-indigo: #6366f1;
+            --brand-gold: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Multicolor Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #14b8a6 0%, #6366f1 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Subtle Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.85);
+        }
+
+        .dark .glass-panel {
+            background: rgba(17, 24, 39, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        /* Gradient Border Hover Effect */
+        .gradient-border-card {
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+        }
+
+        .gradient-border-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: linear-gradient(135deg, rgba(20,184,166,0.5), rgba(99,102,241,0.5), rgba(245,158,11,0.5));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.25;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .gradient-border-card:hover::before {
+            opacity: 1;
+        }
+
+        /* 3D Tilt Card Perspective */
+        .tilt-card {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #14b8a6, #6366f1);
+            border-radius: 9999px;
+        }
+
+        /* Cyber Grid Background in Hero */
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(20, 184, 166, 0.07) 1px, transparent 1px);
+        }
+
+        /* Floating Hologram Animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floatSlow 6s ease-in-out 2s infinite;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Print Styles for Resume Modal */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #resumePrintArea, #resumePrintArea * {
+                visibility: visible;
+            }
+            #resumePrintArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                color: black !important;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-[#070b14] dark:text-slate-100 selection:bg-teal-500 selection:text-white transition-colors duration-300">
+
+    <!-- Skip to Content for Accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-teal-500 focus:text-slate-950 focus:font-bold focus:rounded-lg">
+        Skip to main content
+    </a>
+
+    <!-- Toast Notification Banner (No alert() used anywhere) -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-[9990] flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0" aria-live="polite"></div>
+
+    <!-- ========================================================================== -->
+    <!-- 1. STICKY HEADER & NAVIGATION                                              -->
+    <!-- ========================================================================== -->
+    <header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-200/80 dark:border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-xl p-1" aria-label="Prince Patel Home">
+                <div class="w-10 h-10 rounded-xl bg-brand-gradient p-[2px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-display font-extrabold text-lg text-white">
+                        P<span class="text-teal-400">.</span>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
+                        Prince Patel<span class="text-gradient">.</span>
+                    </span>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 -mt-1">
+                        Web &bull; Apps &bull; CRM
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Primary Navigation">
+                <a href="#about" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">About</a>
+                <a href="#services" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Services</a>
+                <a href="#projects" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Projects</a>
+                <a href="#leaderboard" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition flex items-center gap-1.5">
+                    <span>Leaderboard</span>
+                    <span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span>
+                </a>
+                <a href="#gallery" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Gallery</a>
+                <a href="#blog" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Blog</a>
+                <a href="#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition">Contact</a>
+            </nav>
+
+            <!-- Action Buttons (Resume, Dev Docs, Theme Toggle, Mobile Hamburger) -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Resume Modal Trigger -->
+                <button onclick="openResumeModal()" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-teal-500 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 transition">
+                    <i class="fa-regular fa-file-lines text-teal-500"></i>
+                    <span>Resume</span>
+                </button>
+
+                <!-- Developer Docs / Style Guide Trigger -->
+                <button onclick="openDevDocsModal()" class="hidden md:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-indigo-500/10 border border-indigo-500/30 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-500/20 transition" title="View Style Guide, Next.js & Firebase Deliverables">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Specs &amp; Stack</span>
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition focus:outline-none focus:ring-2 focus:ring-teal-500" aria-label="Toggle color theme">
+                    <i id="themeIcon" class="fa-solid fa-sun text-amber-400 text-base"></i>
+                </button>
+
+                <!-- Primary Header CTA -->
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-brand-gradient shadow-lg shadow-indigo-500/25 hover:opacity-95 hover:scale-[1.02] transition">
+                    <span>Hire Prince</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation menu">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Slide-Down Navigation Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
+            <div class="grid grid-cols-2 gap-2">
+                <a href="#about" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-500/10 hover:text-teal-500 transition"><i class="fa-regular fa-user mr-2 text-teal-500"></i>About</a>
+                <a href="#services" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-500/10 hover:text-teal-500 transition"><i class="fa-solid fa-layer-group mr-2 text-indigo-500"></i>Services</a>
+                <a href="#projects" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-500/10 hover:text-teal-500 transition"><i class="fa-solid fa-laptop-code mr-2 text-amber-500"></i>Projects</a>
+                <a href="#leaderboard" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-500/10 hover:text-teal-500 transition"><i class="fa-solid fa-trophy mr-2 text-teal-500"></i>Leaderboard</a>
+                <a href="#gallery" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-500/10 hover:text-teal-500 transition"><i class="fa-regular fa-images mr-2 text-indigo-500"></i>Gallery</a>
+                <a href="#blog" onclick="closeMobileMenu()" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-500/10 hover:text-teal-500 transition"><i class="fa-solid fa-book-open mr-2 text-amber-500"></i>Blog</a>
+            </div>
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-2">
+                <button onclick="closeMobileMenu(); openResumeModal();" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700 text-center">
+                    <i class="fa-regular fa-file-lines mr-1.5 text-teal-500"></i>Resume
+                </button>
+                <button onclick="closeMobileMenu(); openDevDocsModal();" class="flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold border border-indigo-500/40 text-indigo-500 text-center">
+                    <i class="fa-solid fa-code mr-1.5"></i>Dev Deliverables
+                </button>
+                <a href="#contact" onclick="closeMobileMenu()" class="w-full py-3 rounded-xl text-sm font-bold text-white bg-brand-gradient text-center shadow-md">
+                    Let’s Discuss Your Project
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ========================================================================== -->
+        <!-- 2. HERO SECTION (Futuristic Workspace + Three.js 3D Core + Holographic UI) -->
+        <!-- ========================================================================== -->
+        <section id="hero" class="relative min-h-screen pt-28 pb-20 lg:pt-32 lg:pb-24 flex items-center overflow-hidden cyber-grid">
+            <!-- Ambient Multicolor Gradient Glows -->
+            <div class="absolute top-1/4 -left-24 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/3 right-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 left-1/3 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Column: Headlines, Tagline, CTAs, Social Row -->
+                    <div class="lg:col-span-7 space-y-6 text-left">
+                        <!-- Animated Tagline Pill -->
+                        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-teal-500/30 shadow-sm">
+                            <span class="flex h-2.5 w-2.5 relative">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-500"></span>
+                            </span>
+                            <span class="text-xs sm:text-sm font-semibold tracking-wide text-teal-700 dark:text-teal-300">
+                                Fast, Affordable Web &amp; Digital Solutions.
+                            </span>
+                        </div>
+
+                        <!-- Main Hero Headline -->
+                        <h1 class="font-display font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-[1.12] tracking-tight text-slate-900 dark:text-white">
+                            Elevate Your Small Business with <span class="text-gradient">Future-Ready</span> Web Engineering.
+                        </h1>
+
+                        <!-- One-Line Mission Statement & Sub-Headline -->
+                        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                            From clean, responsive websites and zero-cost hosting to custom web calculators, Android APK conversions, and CRM support—get the digital presence you need to grow without the heavy agency price tag.
+                        </p>
+
+                        <!-- Mission Statement Callout -->
+                        <div class="pl-4 border-l-4 border-teal-500 text-xs sm:text-sm text-slate-500 dark:text-slate-400 italic">
+                            “Bridging technical code and customer relations to empower small businesses with fast, practical digital tools.” — <strong class="text-slate-800 dark:text-slate-200 not-italic">Prince Patel, Lucknow</strong>
+                        </div>
+
+                        <!-- Primary & Secondary CTAs -->
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <button onclick="openQuickContactModal()" class="px-7 py-4 rounded-2xl font-display font-bold text-sm sm:text-base text-white bg-brand-gradient shadow-xl shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.99] transition flex items-center gap-3">
+                                <span>Let’s Discuss Your Project</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            <a href="#projects" class="px-7 py-4 rounded-2xl font-display font-bold text-sm sm:text-base glass-panel text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700 hover:border-teal-500 dark:hover:border-teal-400 transition flex items-center gap-2.5">
+                                <span>View Portfolio</span>
+                                <i class="fa-solid fa-arrow-down-long text-teal-500"></i>
+                            </a>
+                        </div>
+
+                        <!-- Small Social & Direct Contact Row -->
+                        <div class="pt-4 flex flex-wrap items-center gap-3 sm:gap-4 border-t border-slate-200/80 dark:border-slate-800/80">
+                            <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Direct Connect:</span>
+                            <a href="https://wa.me/917268842331?text=Hi%20Prince,%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20discuss%20a%20project!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:border-emerald-500 transition" aria-label="Chat on WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-base"></i>
+                                <span>+91 7268842331</span>
+                            </a>
+                            <a href="mailto:princepatel.tech@gmail.com" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-slate-700 dark:text-slate-300 hover:border-teal-500 transition" aria-label="Send Email">
+                                <i class="fa-regular fa-envelope text-teal-500"></i>
+                                <span>Email</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/prince-patel-141700354" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-blue-600 dark:text-blue-400 hover:border-blue-500 transition" aria-label="LinkedIn Profile">
+                                <i class="fa-brands fa-linkedin-in text-sm"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/princepatel-patelji" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-slate-800 dark:text-slate-200 hover:border-indigo-500 transition" aria-label="GitHub Profile">
+                                <i class="fa-brands fa-github text-sm"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://www.instagram.com/i_t_s__official__prince" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-pink-600 dark:text-pink-400 hover:border-pink-500 transition" aria-label="Instagram Profile">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Futuristic Developer Workspace + Interactive Three.js 3D Cyber-Chip -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-lg lg:max-w-none">
+                            
+                            <!-- Main Futuristic Holographic Workspace Card -->
+                            <div class="glass-panel rounded-3xl p-4 sm:p-5 shadow-2xl border border-teal-500/30 relative overflow-hidden">
+                                <!-- Top HUD Bar -->
+                                <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200/70 dark:border-slate-800">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                        <span class="ml-2 text-[11px] font-mono text-slate-500 dark:text-slate-400">AR_WORKSPACE // PRINCE_CORE_V3.0</span>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-teal-500/15 text-teal-600 dark:text-teal-300 border border-teal-500/30">
+                                        3D INTERACTIVE
+                                    </span>
+                                </div>
+
+                                <!-- Interactive Three.js Canvas Container + Futuristic Developer Illustration Overlay -->
+                                <div class="relative h-72 sm:h-80 w-full rounded-2xl bg-gradient-to-br from-slate-950 via-[#0d152c] to-slate-900 overflow-hidden border border-slate-800 flex items-center justify-center">
+                                    
+                                    <!-- Futuristic Developer Holographic SVG Backdrop -->
+                                    <svg class="absolute inset-0 w-full h-full opacity-35 pointer-events-none" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <!-- Perspective Grid Lines -->
+                                        <path d="M0 360 H600 M0 400 H600 M100 320 L0 450 M200 320 L120 450 M300 320 L300 450 M400 320 L480 450 M500 320 L600 450" stroke="#14b8a6" stroke-width="1" stroke-opacity="0.4"/>
+                                        <!-- Holographic AR Screens -->
+                                        <rect x="35" y="40" width="160" height="105" rx="8" stroke="#14b8a6" stroke-width="1.5" fill="#14b8a6" fill-opacity="0.06"/>
+                                        <line x1="50" y1="65" x2="140" y2="65" stroke="#14b8a6" stroke-width="3"/>
+                                        <line x1="50" y1="82" x2="175" y2="82" stroke="#6366f1" stroke-width="2"/>
+                                        <line x1="50" y1="98" x2="120" y2="98" stroke="#f59e0b" stroke-width="2"/>
+                                        <rect x="405" y="45" width="160" height="105" rx="8" stroke="#6366f1" stroke-width="1.5" fill="#6366f1" fill-opacity="0.06"/>
+                                        <circle cx="450" cy="95" r="26" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4"/>
+                                        <path d="M490 80 H545 M490 95 H535 M490 110 H550" stroke="#6366f1" stroke-width="2"/>
+                                    </svg>
+
+                                    <!-- Three.js 3D Rotating Cyber-Chip Canvas -->
+                                    <canvas id="heroThreeCanvas" class="w-full h-full cursor-grab active:cursor-grabbing relative z-10" aria-label="Interactive 3D rotating computer chip visualization. Drag to rotate."></canvas>
+
+                                    <!-- Interactive Hint Overlay -->
+                                    <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-slate-300 bg-slate-950/75 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 pointer-events-none z-20">
+                                        <span><i class="fa-solid fa-cube text-teal-400 mr-1.5"></i>Drag 3D Cyber-Chip to Rotate</span>
+                                        <span class="text-amber-400">98+ Lighthouse</span>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Workspace Stats Row -->
+                                <div class="grid grid-cols-3 gap-2.5 mt-4">
+                                    <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-900/90 border border-slate-200/70 dark:border-slate-800 text-center">
+                                        <div class="text-lg sm:text-xl font-display font-extrabold text-teal-500">₹0/mo</div>
+                                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Static Hosting Option</div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-900/90 border border-slate-200/70 dark:border-slate-800 text-center">
+                                        <div class="text-lg sm:text-xl font-display font-extrabold text-indigo-500">Web+APK</div>
+                                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Dual Platform Ready</div>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-900/90 border border-slate-200/70 dark:border-slate-800 text-center">
+                                        <div class="text-lg sm:text-xl font-display font-extrabold text-amber-500">BCA + CRM</div>
+                                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Code &amp; Client Care</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Holographic Badge 1 (Top-Left) -->
+                            <div class="hidden sm:flex animate-float absolute -top-6 -left-6 glass-panel px-4 py-2.5 rounded-2xl shadow-xl border border-teal-500/40 items-center gap-3 z-20">
+                                <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-calculator"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-900 dark:text-white">Matrix Engine</div>
+                                    <div class="text-[10px] font-mono text-teal-600 dark:text-teal-400">Live on GitHub Pages</div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Holographic Badge 2 (Bottom-Right) -->
+                            <div class="hidden sm:flex animate-float-delayed absolute -bottom-5 -right-5 glass-panel px-4 py-2.5 rounded-2xl shadow-xl border border-amber-500/40 items-center gap-3 z-20">
+                                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-gamepad"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-900 dark:text-white">Number Game APK</div>
+                                    <div class="text-[10px] font-mono text-amber-600 dark:text-amber-400">Leaderboard Connected</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================== -->
+        <!-- 3. ABOUT SECTION (Bio, Avatar Card, Bullet Highlights, Animated Skills)    -->
+        <!-- ========================================================================== -->
+        <section id="about" class="py-20 lg:py-28 relative border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                        About Your Technical Partner
+                    </span>
+                    <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                        Prince Patel — <span class="text-gradient">Web &amp; Digital Solutions</span>
+                    </h2>
+                    <p class="mt-3 text-base sm:text-lg text-slate-600 dark:text-slate-300">
+                        BCA student, CRM Support background, focused on clean code and practical web tools.
+                    </p>
+                </div>
+
+                <!-- Two-Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    <!-- Left Column: Stylized Developer Portrait Card & Quick Facts -->
+                    <div class="lg:col-span-5">
+                        <div class="glass-panel rounded-3xl p-6 sm:p-8 gradient-border-card shadow-xl relative overflow-hidden">
+                            <!-- Top Status Ribbon -->
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    Available for Freelance
+                                </span>
+                                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                                    <i class="fa-solid fa-location-dot text-teal-500 mr-1"></i>Lucknow, UP, India
+                                </span>
+                            </div>
+
+                            <!-- Stylized Futuristic Developer Avatar Illustration -->
+                            <div class="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto my-4 rounded-3xl p-1 bg-brand-gradient shadow-2xl shadow-indigo-500/20">
+                                <div class="w-full h-full rounded-[20px] bg-slate-950 flex flex-col items-center justify-center relative overflow-hidden">
+                                    <svg class="w-36 h-36" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized Developer Portrait of Prince Patel">
+                                        <circle cx="100" cy="100" r="90" stroke="url(#avatarGrad)" stroke-width="2" stroke-dasharray="8 6" opacity="0.5"/>
+                                        <!-- Shoulders / Hoodie -->
+                                        <path d="M40 185 C40 140, 160 140, 160 185" fill="url(#avatarGrad)" opacity="0.85"/>
+                                        <!-- Neck & Head -->
+                                        <rect x="86" y="115" width="28" height="25" rx="8" fill="#f1c27d"/>
+                                        <circle cx="100" cy="85" r="34" fill="#f1c27d"/>
+                                        <!-- Stylized Hair -->
+                                        <path d="M66 80 C65 50, 135 45, 134 80 C130 62, 75 62, 66 80 Z" fill="#1e293b"/>
+                                        <!-- Futuristic AR Glasses -->
+                                        <rect x="73" y="76" width="54" height="14" rx="5" fill="#0f172a" stroke="#14b8a6" stroke-width="2"/>
+                                        <line x1="78" y1="83" x2="95" y2="83" stroke="#14b8a6" stroke-width="2"/>
+                                        <line x1="105" y1="83" x2="122" y2="83" stroke="#f59e0b" stroke-width="2"/>
+                                        <!-- Smile -->
+                                        <path d="M90 102 Q100 110 110 102" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+                                        <defs>
+                                            <linearGradient id="avatarGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                                                <stop offset="0%" stop-color="#14b8a6"/>
+                                                <stop offset="50%" stop-color="#6366f1"/>
+                                                <stop offset="100%" stop-color="#f59e0b"/>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                    <div class="absolute bottom-2 inset-x-2 py-1 px-2 rounded-lg bg-slate-900/90 backdrop-blur text-center border border-white/10">
+                                        <span class="font-mono text-[10px] text-teal-400">&lt;PrincePatel /&gt;</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Identity Summary -->
+                            <div class="text-center mt-5 space-y-2">
+                                <h3 class="font-display font-bold text-2xl text-slate-900 dark:text-white">Prince Patel</h3>
+                                <p class="text-xs font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                                    Web Developer &bull; BCA Scholar &bull; CRM Executive
+                                </p>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-2">
+                                    Technology should solve problems, not create new ones. I combine solid computer applications fundamentals with real-world CRM customer support experience to deliver fast, high-converting digital tools for small businesses.
+                                </p>
+                            </div>
+
+                            <!-- Highlight Pills -->
+                            <div class="grid grid-cols-2 gap-3 mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 text-xs">
+                                <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/70">
+                                    <div class="text-slate-400 font-mono">EDUCATION</div>
+                                    <div class="font-bold text-slate-800 dark:text-white mt-0.5">BCA (Computer Apps)</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/70">
+                                    <div class="text-slate-400 font-mono">EXPERIENCE</div>
+                                    <div class="font-bold text-slate-800 dark:text-white mt-0.5">CRM Support Exec</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/70">
+                                    <div class="text-slate-400 font-mono">SPECIALTY</div>
+                                    <div class="font-bold text-slate-800 dark:text-white mt-0.5">Web Tools &amp; APKs</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/70">
+                                    <div class="text-slate-400 font-mono">TURNAROUND</div>
+                                    <div class="font-bold text-teal-600 dark:text-teal-400 mt-0.5">3–7 Days Delivery</div>
+                                </div>
+                            </div>
+
+                            <!-- Resume Action Buttons -->
+                            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                                <button onclick="openResumeModal()" class="flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-brand-gradient shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>View / Print Resume</span>
+                                </button>
+<a href="Prince_Patel_Resume.pdf" download="Prince_Patel_Resume.pdf" class="py-3 px-4 rounded-xl font-bold text-xs sm:text-sm border border-slate-300 dark:border-slate-700 hover:border-teal-500 transition flex items-center justify-center gap-2">
+    <i class="fa-solid fa-download text-teal-500"></i>
+    <span>Download CV (PDF)</span>
+</a>                                    <i class="fa-solid fa-download text-teal-500"></i>
+                                    <span>Download CV</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Bullet Highlights & Animated Skill Bars -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <!-- Core Value Proposition Cards -->
+                        <div class="glass-panel rounded-3xl p-6 sm:p-8 space-y-5">
+                            <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white flex items-center gap-2.5">
+                                <i class="fa-solid fa-bolt text-amber-500"></i>
+                                <span>Why Small Businesses &amp; Teams Work With Me</span>
+                            </h3>
+                            <ul class="space-y-3.5 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                                <li class="flex items-start gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-teal-500/15 text-teal-500 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></span>
+                                    <span><strong class="text-slate-900 dark:text-white">Clean Code &amp; Zero Ongoing Server Costs:</strong> I engineer fast static and JAMstack sites deployed on GitHub Pages, Netlify, or Vercel so local shops never pay bloated monthly hosting fees.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-indigo-500/15 text-indigo-500 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></span>
+                                    <span><strong class="text-slate-900 dark:text-white">Custom Interactive Calculators &amp; Logic:</strong> Proven experience building mathematical matrix engines, algorithmic C games, and interactive price estimators.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-amber-500/15 text-amber-500 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></span>
+                                    <span><strong class="text-slate-900 dark:text-white">Real CRM &amp; Client Communication Background:</strong> As a CRM Support Executive, I understand lead capture, WhatsApp automation, and clear, dependable communication.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Animated Skill Bars Card -->
+                        <div class="glass-panel rounded-3xl p-6 sm:p-8">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white flex items-center gap-2.5">
+                                    <i class="fa-solid fa-chart-simple text-teal-500"></i>
+                                    <span>Technical Proficiency &amp; Toolkit</span>
+                                </h3>
+                                <span class="text-xs font-mono text-slate-400">Continuously Expanding</span>
+                            </div>
+
+                            <div class="space-y-4" id="skillsContainer">
+                                <!-- Skill 1 -->
+                                <div>
+                                    <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                                        <span>HTML5, CSS3, Tailwind CSS &amp; Responsive UI</span>
+                                        <span class="font-mono text-teal-500">95%</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="skill-bar-fill h-full bg-brand-gradient rounded-full transition-all duration-1000" style="width: 95%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Skill 2 -->
+                                <div>
+                                    <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                                        <span>JavaScript (ES6+), DOM Logic &amp; Custom Calculators</span>
+                                        <span class="font-mono text-indigo-500">88%</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="skill-bar-fill h-full bg-brand-gradient rounded-full transition-all duration-1000" style="width: 88%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Skill 3 -->
+                                <div>
+                                    <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                                        <span>C Programming, Pointers &amp; Algorithmic Problem Solving</span>
+                                        <span class="font-mono text-amber-500">90%</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="skill-bar-fill h-full bg-brand-gradient rounded-full transition-all duration-1000" style="width: 90%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Skill 4 -->
+                                <div>
+                                    <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                                        <span>Web-to-Mobile (Android APK) Packaging &amp; GitHub Pages</span>
+                                        <span class="font-mono text-teal-500">92%</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="skill-bar-fill h-full bg-brand-gradient rounded-full transition-all duration-1000" style="width: 92%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Skill 5 -->
+                                <div>
+                                    <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                                        <span>CRM Workflows, Excel + AI Dashboards &amp; Client Support</span>
+                                        <span class="font-mono text-indigo-500">94%</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="skill-bar-fill h-full bg-brand-gradient rounded-full transition-all duration-1000" style="width: 94%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Skill 6 -->
+                                <div>
+                                    <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                                        <span>Next.js, React &amp; Firebase/Supabase Cloud Integration</span>
+                                        <span class="font-mono text-amber-500">80%</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="skill-bar-fill h-full bg-brand-gradient rounded-full transition-all duration-1000" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================== -->
+        <!-- 4. SERVICES SECTION (4 Expandable Cards with Case Study & Tech Stack)      -->
+        <!-- ========================================================================== -->
+        <section id="services" class="py-20 lg:py-28 bg-slate-100/70 dark:bg-slate-900/40 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                        What I Offer
+                    </span>
+                    <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                        How I Can Help Your <span class="text-gradient">Business Grow</span>
+                    </h2>
+                    <p class="mt-3 text-base sm:text-lg text-slate-600 dark:text-slate-300">
+                        Click <strong>“Expand Case Study &amp; Stack”</strong> on any service below to inspect real deliverables and technical architecture.
+                    </p>
+                </div>
+
+                <!-- 4 Service Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                    
+                    <!-- Service 1 -->
+                    <div class="glass-panel rounded-3xl p-6 sm:p-8 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-teal-500 text-2xl">
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400">Zero-Cost Hosting</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-white mb-3">
+                                1. Professional Business Websites
+                            </h3>
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Lightning-fast, mobile-responsive landing pages and multi-section websites built from the ground up using clean HTML, CSS, and JavaScript. Configured with zero-cost ongoing hosting so your overhead stays at ₹0/month.
+                            </p>
+
+                            <!-- Expandable Case Study Drawer -->
+                            <div id="serviceCase1" class="hidden mt-5 pt-5 border-t border-slate-200 dark:border-slate-800 space-y-3 text-xs sm:text-sm">
+                                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-teal-500/20">
+                                    <div class="font-bold text-teal-600 dark:text-teal-400 mb-1">Mini Case Study: Local Clinic &amp; Coaching Center</div>
+                                    <p class="text-slate-600 dark:text-slate-300">Replaced slow brochure PDFs with a 99-Lighthouse mobile site featuring one-tap WhatsApp inquiry routing and Google Maps direction cards, boosting direct walk-in leads by 3x.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">HTML5</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Tailwind CSS</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Vanilla JS</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Next.js</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">GitHub Pages</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between">
+                            <button onclick="toggleServiceCase('serviceCase1', this)" class="text-xs sm:text-sm font-bold text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-2">
+                                <span>Expand Case Study &amp; Stack</span>
+                                <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                            <button onclick="prefillServiceAndScroll('Professional Business Website')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-teal-500 hover:text-white transition">
+                                Request Quote &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass-panel rounded-3xl p-6 sm:p-8 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-500 text-2xl">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">Custom Logic</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-white mb-3">
+                                2. Custom Web Tools &amp; Features
+                            </h3>
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Need something more than just text and images? I build interactive web features—from custom price estimators and EMI/GST calculators to booking forms and complex matrix utilities tailored to your workflow.
+                            </p>
+
+                            <!-- Expandable Case Study Drawer -->
+                            <div id="serviceCase2" class="hidden mt-5 pt-5 border-t border-slate-200 dark:border-slate-800 space-y-3 text-xs sm:text-sm">
+                                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-indigo-500/20">
+                                    <div class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Mini Case Study: Interactive Matrix Calculator</div>
+                                    <p class="text-slate-600 dark:text-slate-300">Engineered a responsive browser utility capable of solving multi-dimensional matrix addition, multiplication, and determinants with zero page reloads and persistent history.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">JavaScript ES6+</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Algorithmic Logic</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">LocalStorage API</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">React / Next.js</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between">
+                            <button onclick="toggleServiceCase('serviceCase2', this)" class="text-xs sm:text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-2">
+                                <span>Expand Case Study &amp; Stack</span>
+                                <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                            <button onclick="prefillServiceAndScroll('Custom Web Tool / Calculator')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white transition">
+                                Request Quote &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass-panel rounded-3xl p-6 sm:p-8 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-500 text-2xl">
+                                    <i class="fa-brands fa-android"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">Android APK</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-white mb-3">
+                                3. Web-to-Mobile App Conversion
+                            </h3>
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Turn your existing or newly built website into a native, downloadable Android application (APK) with custom icons and splash screens so your customers can launch your business right from their phone's home screen.
+                            </p>
+
+                            <!-- Expandable Case Study Drawer -->
+                            <div id="serviceCase3" class="hidden mt-5 pt-5 border-t border-slate-200 dark:border-slate-800 space-y-3 text-xs sm:text-sm">
+                                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-amber-500/20">
+                                    <div class="font-bold text-amber-600 dark:text-amber-400 mb-1">Mini Case Study: Number Guessing Game (Web + APK)</div>
+                                    <p class="text-slate-600 dark:text-slate-300">Converted an interactive web logic game into an installable Android APK package with touch-optimized controls, offline readiness, and player score tracking.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">PWA / WebView</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Android APK Build</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Touch UI</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Firebase Sync</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between">
+                            <button onclick="toggleServiceCase('serviceCase3', this)" class="text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-2">
+                                <span>Expand Case Study &amp; Stack</span>
+                                <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                            <button onclick="prefillServiceAndScroll('Web-to-Mobile APK Conversion')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-amber-500 hover:text-slate-950 transition">
+                                Request Quote &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="glass-panel rounded-3xl p-6 sm:p-8 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-500 text-2xl">
+                                    <i class="fa-solid fa-headset"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Workflows &amp; Data</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-white mb-3">
+                                4. CRM &amp; Tech Support
+                            </h3>
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Professional hands-on support to help you organize client data, build Excel + AI reporting dashboards, set up efficient customer relationship workflows, and troubleshoot day-to-day tech hurdles.
+                            </p>
+
+                            <!-- Expandable Case Study Drawer -->
+                            <div id="serviceCase4" class="hidden mt-5 pt-5 border-t border-slate-200 dark:border-slate-800 space-y-3 text-xs sm:text-sm">
+                                <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-emerald-500/20">
+                                    <div class="font-bold text-emerald-600 dark:text-emerald-400 mb-1">Mini Case Study: Lead Tracking &amp; Excel Automation</div>
+                                    <p class="text-slate-600 dark:text-slate-300">Structured messy inquiry logs into automated CRM sheets with WhatsApp follow-up templates and AI-assisted KPI summaries, cutting response times by 60%.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">CRM Pipelines</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Excel + AI</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">WhatsApp Business</span>
+                                    <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-200 dark:bg-slate-800">Formspree / Cloud DB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between">
+                            <button onclick="toggleServiceCase('serviceCase4', this)" class="text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-2">
+                                <span>Expand Case Study &amp; Stack</span>
+                                <i class="fa-solid fa-chevron-down transition-transform"></i>
+                            </button>
+                            <button onclick="prefillServiceAndScroll('CRM & Tech Support')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white transition">
+                                Request Quote &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================== -->
+        <!-- 5. PROJECTS SECTION (Showcase Grid with 3D Tilt & Case Study Modals)       -->
+        <!-- ========================================================================== -->
+        <section id="projects" class="py-20 lg:py-28 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header & Category Filter Pills -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                            Proof of Skill
+                        </span>
+                        <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                            Featured <span class="text-gradient">Projects &amp; Case Studies</span>
+                        </h2>
+                        <p class="mt-2 text-base text-slate-600 dark:text-slate-300 max-w-2xl">
+                            A look at the live web applications, Android APKs, AI dashboards, and academic presentations I have engineered.
+                        </p>
+                    </div>
+
+                    <!-- Project Filter Buttons -->
+                    <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter projects by category">
+                        <button onclick="filterProjects('all', this)" class="project-filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-brand-gradient text-white shadow">All (6)</button>
+                        <button onclick="filterProjects('webapp', this)" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">Web Tools</button>
+                        <button onclick="filterProjects('game', this)" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">Games &amp; APK</button>
+                        <button onclick="filterProjects('ai', this)" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">AI &amp; Data</button>
+                        <button onclick="filterProjects('academic', this)" class="project-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">PPT &amp; C Logic</button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid (Rendered dynamically from JS project data + easy HTML addition block) -->
+                <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                    <!-- Populated via JavaScript for rich interactive thumbnails & modals -->
+                </div>
+
+                <!-- Developer Note: Easy Add Project Trigger -->
+                <div class="mt-12 glass-panel rounded-2xl p-5 border border-dashed border-teal-500/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-teal-500/15 text-teal-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">Built a New Website or App? Add It Instantly!</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Click the button to test adding a new project card live on this page, or add it permanently in the <code class="font-mono text-teal-500">PROJECTS_DATA</code> array.</p>
+                        </div>
+                    </div>
+                    <button onclick="openAddProjectModal()" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-teal-500/15 text-teal-600 dark:text-teal-300 border border-teal-500/30 hover:bg-teal-500 hover:text-slate-950 transition shrink-0">
+                        <i class="fa-solid fa-folder-plus mr-1.5"></i>+ Add New Project Card
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================== -->
+        <!-- 6. RECENT PLAYERS HISTORY & TOP 10 LEADERBOARD SECTION                     -->
+        <!-- ========================================================================== -->
+        <section id="leaderboard" class="py-20 lg:py-28 bg-slate-100/70 dark:bg-slate-900/40 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Header -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                            <span class="w-2 h-2 rounded-full bg-teal-500 animate-ping"></span>
+                            <span>Live Game Telemetry &bull; LocalStorage + Cloud Ready</span>
+                        </div>
+                        <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                            Recent Players History &amp; <span class="text-gradient">Top 10 Leaderboard</span>
+                        </h2>
+                        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl">
+                            Live telemetry interface for Prince’s <strong>Number Guessing Game (Web &amp; APK)</strong> and <strong>Matrix Speed Challenge</strong>. Sort, filter, log a new test score, or export the full dataset to CSV.
+                        </p>
+                    </div>
+
+                    <!-- Action Buttons: Log Score & Export CSV -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button onclick="toggleSimulateScoreForm()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-brand-gradient shadow hover:opacity-95 transition flex items-center gap-2">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>+ Simulate / Log New Score</span>
+                        </button>
+                        <button onclick="exportLeaderboardCSV()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold glass-panel border border-slate-300 dark:border-slate-700 hover:border-teal-500 transition flex items-center gap-2">
+                            <i class="fa-solid fa-file-csv text-teal-500"></i>
+                            <span>Export CSV</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive "Log New Score" Drawer (Hidden by default) -->
+                <div id="simulateScoreDrawer" class="hidden mb-8 glass-panel rounded-3xl p-6 border border-teal-500/40 shadow-xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bolt text-amber-400"></i>
+                            <span>Log a Live Player Score (Updates Leaderboard &amp; History Instantly)</span>
+                        </h3>
+                        <button onclick="toggleSimulateScoreForm()" class="text-slate-400 hover:text-rose-500"><i class="fa-solid fa-xmark text-lg"></i></button>
+                    </div>
+                    <form id="addScoreForm" onsubmit="handleAddPlayerScore(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <div>
+                            <label class="block text-xs font-mono text-slate-400 mb-1">PLAYER NAME</label>
+                            <input type="text" id="scorePlayerName" required placeholder="e.g., Aman Verma" class="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-slate-400 mb-1">GAME NAME</label>
+                            <select id="scoreGameName" class="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                                <option value="Number Guessing Game">Number Guessing Game</option>
+                                <option value="Matrix Speed Challenge">Matrix Speed Challenge</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-slate-400 mb-1">DIFFICULTY LEVEL</label>
+                            <select id="scoreLevel" class="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                                <option value="Pro">Pro (1-1000)</option>
+                                <option value="Hard">Hard (1-500)</option>
+                                <option value="Medium">Medium (1-100)</option>
+                                <option value="Easy">Easy (1-50)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-slate-400 mb-1">SCORE (PTS)</label>
+                            <input type="number" id="scorePoints" required min="100" max="9999" value="1850" class="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                        </div>
+                        <div class="flex items-end">
+                            <button type="submit" class="w-full py-2.5 px-4 rounded-xl font-bold text-sm bg-teal-500 text-slate-950 hover:bg-teal-400 transition">
+                                Save Record
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Filter & Sort Bar -->
+                <div class="glass-panel rounded-3xl p-5 sm:p-6 shadow-xl">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 mb-6 border-b border-slate-200 dark:border-slate-800">
+                        
+                        <!-- View Mode Tabs -->
+                        <div class="flex items-center gap-2">
+                            <button id="tabTop10" onclick="switchLeaderboardTab('top10')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand-gradient text-white shadow">
+                                <i class="fa-solid fa-crown mr-1.5"></i>Top 10 Leaderboard
+                            </button>
+                            <button id="tabRecent" onclick="switchLeaderboardTab('recent')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">
+                                <i class="fa-solid fa-clock-rotate-left mr-1.5"></i>Recent Players History
+                            </button>
+                        </div>
+
+                        <!-- Filters & Sorting Controls -->
+                        <div class="flex flex-wrap items-center gap-3">
+                            <div class="flex items-center gap-2">
+                                <label for="filterGameSelect" class="text-xs font-mono text-slate-400">Game:</label>
+                                <select id="filterGameSelect" onchange="renderLeaderboardAndHistory()" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-medium">
+                                    <option value="ALL">All Games</option>
+                                    <option value="Number Guessing Game">Number Guessing Game</option>
+                                    <option value="Matrix Speed Challenge">Matrix Speed Challenge</option>
+                                </select>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <label for="filterLevelSelect" class="text-xs font-mono text-slate-400">Level:</label>
+                                <select id="filterLevelSelect" onchange="renderLeaderboardAndHistory()" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-medium">
+                                    <option value="ALL">All Levels</option>
+                                    <option value="Pro">Pro</option>
+                                    <option value="Hard">Hard</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Easy">Easy</option>
+                                </select>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <label for="sortLeaderboardSelect" class="text-xs font-mono text-slate-400">Sort By:</label>
+                                <select id="sortLeaderboardSelect" onchange="renderLeaderboardAndHistory()" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-medium">
+                                    <option value="score">Highest Score</option>
+                                    <option value="timesPlayed">Times Played</option>
+                                    <option value="recent">Most Recent</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-200 dark:border-slate-800 text-[11px] font-mono uppercase tracking-wider text-slate-400">
+                                    <th class="py-3 px-4">Rank / Status</th>
+                                    <th class="py-3 px-4">Player Name</th>
+                                    <th class="py-3 px-4">Game Name</th>
+                                    <th class="py-3 px-4">Level</th>
+                                    <th class="py-3 px-4">Score</th>
+                                    <th class="py-3 px-4">Times Played</th>
+                                    <th class="py-3 px-4">Last Played Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboardTableBody" class="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-sm">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bottom Cloud Roadmap Bar -->
+                    <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-database text-indigo-400"></i>
+                            <span><strong>Cloud Sync Roadmap:</strong> Ready for Firebase Realtime DB / Supabase PostgreSQL connection (<button onclick="openDevDocsModal()" class="text-teal-500 underline">view schema in Dev Docs</button>).</span>
+                        </div>
+                        <a href="https://princepatel-patelji.github.io/Number-Game-/" target="_blank" rel="noopener noreferrer" class="font-bold text-teal-600 dark:text-teal-400 hover:underline">
+                            Play Live Number Guessing Game &rarr;
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================== -->
+        <!-- 7. GALLERY & MEDIA SECTION (Lightbox, Filters & Custom Visual Artwork)     -->
+        <!-- ========================================================================== -->
+         <!-- ========================================================================== -->
+        <!-- CERTIFICATIONS, LICENSES & ACADEMIC HONORS SECTION                         -->
+        <!-- ========================================================================== -->
+        <section id="certifications" class="py-20 lg:py-28 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header & Filter Tabs -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                            12 Verified Credentials &amp; Honors
+                        </span>
+                        <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                            Certifications, <span class="text-gradient">Masterclasses &amp; Awards</span>
+                        </h2>
+                        <p class="mt-2 text-base text-slate-600 dark:text-slate-300 max-w-2xl">
+                            Backed by ISO-certified technical diplomas, global industry credentials from LinkedIn Learning, TCS iON &amp; Semrush Academy, and high-distinction academic honors.
+                        </p>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterCerts('all', this)" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-gradient text-white shadow">All (12)</button>
+                        <button onclick="filterCerts('tech', this)" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">Tech, AI &amp; Coding</button>
+                        <button onclick="filterCerts('data', this)" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">Excel, Tally &amp; Data</button>
+                        <button onclick="filterCerts('marketing', this)" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">SEO &amp; Corporate</button>
+                        <button onclick="filterCerts('awards', this)" class="cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500">Awards &amp; Rank</button>
+                    </div>
+                </div>
+
+                <!-- 12 Certificates Grid -->
+                <div id="certsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+                    <!-- 1. DEO Course (96% Top Distinction) -->
+                    <div data-cert-cat="data" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-keyboard"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">96% Score &bull; ISO Certified</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Data Entry Operations (DEO) Mastery
+                            </h3>
+                            <p class="text-xs font-mono text-teal-500 mb-3">Best Computer Technology (MSME Govt. Regd.) &bull; ID: BCT/2026/144355</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Graduated with an exceptional <strong>96% distinction</strong>, validating elite 70+ WPM typing accuracy, rapid database structuring, and zero-error enterprise documentation workflows.
+                            </p>
+                        </div>
+                        <a href="cert-deo.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-teal-500/10 border border-teal-500/40 text-teal-400 hover:bg-teal-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 2. Microsoft Excel with AI Masterclass (87%) -->
+                    <div data-cert-cat="data" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-teal-500/15 text-teal-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-file-excel"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-teal-500/15 text-teal-400 border border-teal-500/30">87% Exam Score</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Microsoft Excel with A.I. Masterclass
+                            </h3>
+                            <p class="text-xs font-mono text-teal-500 mb-3">Skill Course (ISO 9001:2015) &bull; ID: SC-BC776A1884</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Completed under mentor Satish Dhawale with an <strong>87% final assessment score</strong> (completed in just 14 minutes). Specialized in AI-driven formulas, automated KPI dashboards, and business analytics.
+                            </p>
+                        </div>
+                        <a href="cert-excel-ai.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-teal-500/10 border border-teal-500/40 text-teal-400 hover:bg-teal-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 3. What Is Generative AI? (LinkedIn Learning) -->
+                    <div data-cert-cat="tech" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-blue-500/15 text-blue-400 flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">LinkedIn Learning</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Generative AI &amp; AI Tools Architecture
+                            </h3>
+                            <p class="text-xs font-mono text-indigo-400 mb-3">LinkedIn Learning &bull; ID: aac3a11871630...</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Certified in modern Artificial Intelligence, Generative AI models, and prompt engineering workflows to accelerate web development, content creation, and intelligent business automation.
+                            </p>
+                        </div>
+                        <a href="cert-linkedin-ai.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-indigo-500/10 border border-indigo-500/40 text-indigo-400 hover:bg-indigo-500 hover:text-white transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 4. TCS iON Career Edge - Young Professional -->
+                    <div data-cert-cat="marketing" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">Batch 4 &bull; All Pass</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                TCS iON Career Edge – Young Professional
+                            </h3>
+                            <p class="text-xs font-mono text-indigo-400 mb-3">Tata Consultancy Services (TCS iON)</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Successfully cleared all modules in TCS iON's flagship corporate readiness program, mastering business etiquette, IT foundational skills, corporate communication, and analytical problem-solving.
+                            </p>
+                        </div>
+                        <a href="cert-tcs-ion.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-indigo-500/10 border border-indigo-500/40 text-indigo-400 hover:bg-indigo-500 hover:text-white transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 5. Certificate of Python Professional -->
+                    <div data-cert-cat="tech" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-python"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">Pro Developer</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Certificate of Python Professional
+                            </h3>
+                            <p class="text-xs font-mono text-amber-400 mb-3">Programming &amp; Automation</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Demonstrates strong command over Python syntax, algorithmic logic, data structures, and task automation scripts to build reliable backend utilities and clean software solutions.
+                            </p>
+                        </div>
+                        <a href="cert-python.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-amber-500/10 border border-amber-500/40 text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 6. ADCA (87%) - RAMA Technical Institute -->
+                    <div data-cert-cat="tech" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-teal-500/15 text-teal-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-teal-500/15 text-teal-400 border border-teal-500/30">87% First Division</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Advance Diploma in Computer Applications (ADCA)
+                            </h3>
+                            <p class="text-xs font-mono text-teal-500 mb-3">RAMA Technical Institute</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Comprehensive diploma completed with an <strong>87% score</strong>, covering computer architecture, operating systems, office automation, internet technologies, and software fundamentals.
+                            </p>
+                        </div>
+                        <a href="cert-adca.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-teal-500/10 border border-teal-500/40 text-teal-400 hover:bg-teal-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 7. Tally Prime (88%) - Best Computer Technology -->
+                    <div data-cert-cat="data" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">88% Score</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Tally Prime &amp; Financial Accounting
+                            </h3>
+                            <p class="text-xs font-mono text-emerald-400 mb-3">Best Computer Technology (ISO 9001:2015)</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Achieved an <strong>88% score</strong> in computerized accounting, GST billing, invoice management, voucher entry, and inventory tracking—ideal for small business ERP and CRM support.
+                            </p>
+                        </div>
+                        <a href="cert-tally.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-teal-500/10 border border-teal-500/40 text-teal-400 hover:bg-teal-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 8. Semrush Academy - SEO Crash Course with Brian Dean -->
+                    <div data-cert-cat="marketing" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">Global SEO</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                SEO Crash Course with Brian Dean
+                            </h3>
+                            <p class="text-xs font-mono text-amber-400 mb-3">Semrush Academy</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Trained in on-page SEO, keyword research, technical site speed optimization, and Google search ranking strategies so every client website I build ranks higher and attracts local traffic.
+                            </p>
+                        </div>
+                        <a href="cert-semrush-seo.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-amber-500/10 border border-amber-500/40 text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 9. Semrush Academy - Social Media Marketing Crash Course -->
+                    <div data-cert-cat="marketing" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-pink-500/15 text-pink-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-bullhorn"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-pink-500/15 text-pink-400 border border-pink-500/30">Digital Growth</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Social Media Marketing Crash Course
+                            </h3>
+                            <p class="text-xs font-mono text-pink-400 mb-3">Semrush Academy</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Certified in audience engagement, brand positioning, content funnels, and social media analytics to help small businesses turn online followers into paying customers.
+                            </p>
+                        </div>
+                        <a href="cert-semrush-smm.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-indigo-500/10 border border-indigo-500/40 text-indigo-400 hover:bg-indigo-500 hover:text-white transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 10. Advanced Excel Certification - Best Computer Technology -->
+                    <div data-cert-cat="data" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-teal-500/15 text-teal-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-teal-500/15 text-teal-400 border border-teal-500/30">Data Analytics</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Advanced Excel &amp; MIS Reporting
+                            </h3>
+                            <p class="text-xs font-mono text-teal-500 mb-3">Best Computer Technology (ISO 9001:2015)</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Specialized in VLOOKUP/XLOOKUP, Pivot Tables, conditional formatting, macro automation, and complex business data cleaning for executive decision-making.
+                            </p>
+                        </div>
+                        <a href="cert-adv-excel.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-teal-500/10 border border-teal-500/40 text-teal-400 hover:bg-teal-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Verified Certificate
+                        </a>
+                    </div>
+
+                    <!-- 11. Maharajganj Talent Search Contest - 3rd Rank Holder -->
+                    <div data-cert-cat="awards" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40">3rd Rank Podium</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                Maharajganj Talent Search Contest – 3rd Rank
+                            </h3>
+                            <p class="text-xs font-mono text-amber-400 mb-3">Regional Competitive Examination</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Secured the prestigious <strong>3rd Rank</strong> among hundreds of competing students, demonstrating sharp analytical aptitude, speed under pressure, and academic excellence.
+                            </p>
+                        </div>
+                        <a href="cert-talent-search.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-amber-500/10 border border-amber-500/40 text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Award Certificate
+                        </a>
+                    </div>
+
+                    <!-- 12. CUCET Merit Scholarship - Chandigarh University -->
+                    <div data-cert-cat="awards" class="cert-card glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">Merit Scholar</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">
+                                CUCET Merit Scholarship Award (BCA Hons.)
+                            </h3>
+                            <p class="text-xs font-mono text-indigo-400 mb-3">Chandigarh University (NAAC A+) &bull; Ref: CET7639824</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5">
+                                Awarded a <strong>Merit Scholarship</strong> by Chandigarh University on the basis of entrance test performance for the Bachelor of Computer Applications (Hons.) program.
+                            </p>
+                        </div>
+                        <a href="cert-cucet.jpg" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center bg-indigo-500/10 border border-indigo-500/40 text-indigo-400 hover:bg-indigo-500 hover:text-white transition">
+                            <i class="fa-solid fa-eye mr-1.5"></i>View Scholarship Letter
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Inline Script for Instant Certificate Filtering -->
+            <script>
+                function filterCerts(category, clickedBtn) {
+                    const cards = document.querySelectorAll('.cert-card');
+                    const buttons = document.querySelectorAll('.cert-filter-btn');
+                    
+                    buttons.forEach(btn => {
+                        btn.className = 'cert-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel text-slate-700 dark:text-slate-300 hover:border-teal-500';
+                    });
+                    clickedBtn.className = 'cert-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-gradient text-white shadow';
+
+                    cards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-cert-cat') === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            </script>
+        </section>
+        <section id="gallery" class="py-20 lg:py-28 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                            Visual Showcase &amp; Media
+                        </span>
+                        <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                            Design Assets, <span class="text-gradient">AI Visuals &amp; Infographics</span>
+                        </h2>
+                        <p class="mt-2 text-base text-slate-600 dark:text-slate-300 max-w-2xl">
+                            Click any visual card to launch the full-screen Lightbox with technical captions and prompt architecture.
+                        </p>
+                    </div>
+                    
+
+                    <!-- Gallery Filter Pills -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterGallery('all', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-gradient text-white">All Media</button>
+                        <button onclick="filterGallery('ai', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel">Generative AI</button>
+                        <button onclick="filterGallery('dashboard', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel">Excel + AI</button>
+                        <button onclick="filterGallery('code', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel">C Infographic</button>
+                        <button onclick="filterGallery('student', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass-panel">BCA &amp; PPT</button>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid (Populated via JS) -->
+                <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            </div>
+        </section>
+<!-- ========================================================================== -->
+        <!-- CERTIFICATIONS & ACHIEVEMENTS SECTION                                      -->
+        <!-- ========================================================================== -->
+        <section id="certifications" class="py-20 lg:py-28 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                        Verified Credentials
+                    </span>
+                    <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                        Certifications &amp; <span class="text-gradient">Achievements</span>
+                    </h2>
+                    <p class="mt-3 text-base text-slate-600 dark:text-slate-300">
+                        Official certifications showcasing my technical foundation in programming, analytics, and web development.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                    
+                    <!-- Certificate Card 1 -->
+                    <div class="glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-teal-500/15 text-teal-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-teal-500/10 text-teal-400">Verified</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-2">
+                                C Programming &amp; Problem Solving
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4">
+                                Mastered core computer fundamentals, pointers, memory management, and algorithmic game design.
+                            </p>
+                        </div>
+                        <!-- Apne certificate ki image ya PDF ka naam href mein likhein -->
+                        <a href="certificate-1.pdf" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center border border-teal-500/40 text-teal-500 hover:bg-teal-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-up-right-from-square mr-1.5"></i>View Certificate
+                        </a>
+                    </div>
+
+                    <!-- Certificate Card 2 -->
+                    <div class="glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-certificate"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400">Verified</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-2">
+                                Excel + AI &amp; Data Analytics
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4">
+                                Automated KPI dashboards, CRM data structuring, and AI-assisted business reporting workflows.
+                            </p>
+                        </div>
+                        <a href="certificate-2.pdf" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center border border-indigo-500/40 text-indigo-400 hover:bg-indigo-500 hover:text-white transition">
+                            <i class="fa-solid fa-up-right-from-square mr-1.5"></i>View Certificate
+                        </a>
+                    </div>
+
+                    <!-- Certificate Card 3 (Naya add karne ke liye is block ko copy-paste karein) -->
+                    <div class="glass-panel rounded-3xl p-6 gradient-border-card flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-medal"></i>
+                                </div>
+                                <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/10 text-amber-400">Verified</span>
+                            </div>
+                            <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-2">
+                                Web Development &amp; UI Engineering
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4">
+                                Responsive front-end architecture using HTML5, CSS3, JavaScript, and modern deployment pipelines.
+                            </p>
+                        </div>
+                        <a href="certificate-3.pdf" target="_blank" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center border border-amber-500/40 text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition">
+                            <i class="fa-solid fa-up-right-from-square mr-1.5"></i>View Certificate
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ========================================================================== -->
+        <!-- 8. BLOG & LEARNING NOTES SECTION (Markdown Reader, Tags & Newsletter)      -->
+        <!-- ========================================================================== -->
+        <section id="blog" class="py-20 lg:py-28 bg-slate-100/70 dark:bg-slate-900/40 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                            Knowledge Sharing
+                        </span>
+                        <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                            Blog, Tutorials &amp; <span class="text-gradient">BCA Learning Notes</span>
+                        </h2>
+                        <p class="mt-2 text-base text-slate-600 dark:text-slate-300 max-w-2xl">
+                            Practical guides on C programming logic, Excel + AI automation, zero-cost web hosting, and study notes.
+                        </p>
+                    </div>
+
+                    <!-- Tag Filter Pills -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterBlog('ALL', this)" class="blog-tag-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-brand-gradient text-white">All Posts</button>
+                        <button onclick="filterBlog('C Programming', this)" class="blog-tag-btn px-3.5 py-2 rounded-xl text-xs font-semibold glass-panel">C Programming</button>
+                        <button onclick="filterBlog('Web Dev', this)" class="blog-tag-btn px-3.5 py-2 rounded-xl text-xs font-semibold glass-panel">Web Dev</button>
+                        <button onclick="filterBlog('Excel', this)" class="blog-tag-btn px-3.5 py-2 rounded-xl text-xs font-semibold glass-panel">Excel</button>
+                        <button onclick="filterBlog('AI', this)" class="blog-tag-btn px-3.5 py-2 rounded-xl text-xs font-semibold glass-panel">AI</button>
+                        <button onclick="filterBlog('Study Tips', this)" class="blog-tag-btn px-3.5 py-2 rounded-xl text-xs font-semibold glass-panel">Study Tips</button>
+                    </div>
+                </div>
+
+                <!-- Blog Grid (Populated via JS) -->
+                <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-3 gap-7"></div>
+
+                <!-- Newsletter Subscribe Banner -->
+                <div class="mt-14 glass-panel rounded-3xl p-6 sm:p-10 border border-indigo-500/30 relative overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-7 space-y-2">
+                            <span class="text-xs font-mono uppercase tracking-widest text-teal-500">Monthly Tech &amp; Coding Digest</span>
+                            <h3 class="font-display font-bold text-2xl text-slate-900 dark:text-white">
+                                Subscribe to Prince’s Dev &amp; Study Notes
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300">
+                                Get new C programming cheat sheets, Excel + AI templates, and small-business web tips straight to your inbox. No spam, ever.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <form onsubmit="handleNewsletterSubscribe(event)" class="flex flex-col sm:flex-row gap-3">
+                                <input type="email" id="newsletterEmail" required placeholder="Enter your email address..." class="flex-1 px-4 py-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                                <button type="submit" class="px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-brand-gradient shadow-lg hover:opacity-95 transition shrink-0">
+                                    Subscribe
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================== -->
+        <!-- 9. CONTACT & LEAD CAPTURE SECTION                                          -->
+        <!-- ========================================================================== -->
+        <section id="contact" class="py-20 lg:py-28 border-t border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                        Let’s Build Together
+                    </span>
+                    <h2 class="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+                        Ready to Upgrade Your <span class="text-gradient">Digital Presence?</span>
+                    </h2>
+                    <p class="mt-3 text-base sm:text-lg text-slate-600 dark:text-slate-300">
+                        Whether you need a clean business website, a custom web tool, an Android APK conversion, or CRM support—reach out today for a free consultation.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    <!-- Left Column: Direct Contact Info, Office Hours, Location & Quick Actions -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                            <h3 class="font-display font-bold text-xl text-slate-900 dark:text-white">
+                                Direct Contact &amp; Office Hours
+                            </h3>
+
+                            <!-- Contact Items -->
+                            <div class="space-y-4">
+                                <a href="https://wa.me/917268842331?text=Hi%20Prince,%20I%20want%20to%20discuss%20a%20web/digital%20project!" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 transition group">
+                                    <div class="w-12 h-12 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-mono uppercase text-emerald-600 dark:text-emerald-400">WhatsApp Business (Fastest)</div>
+                                        <div class="font-display font-bold text-base text-slate-900 dark:text-white">+91 7268842331</div>
+                                    </div>
+                                </a>
+
+                                <a href="mailto:princepatel.tech@gmail.com" class="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 hover:border-teal-500 transition">
+                                    <div class="w-12 h-12 rounded-xl bg-teal-500/15 text-teal-500 flex items-center justify-center text-lg shrink-0">
+                                        <i class="fa-regular fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-mono uppercase text-slate-400">Email Address</div>
+                                        <div class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">princepatel.tech@gmail.com</div>
+                                    </div>
+                                </a>
+
+                                <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                                    <div class="w-12 h-12 rounded-xl bg-indigo-500/15 text-indigo-500 flex items-center justify-center text-lg shrink-0">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-mono uppercase text-slate-400">Location &amp; Service Area</div>
+                                        <div class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Lucknow, Uttar Pradesh, India (Remote Worldwide)</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                                    <div class="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-lg shrink-0">
+                                        <i class="fa-regular fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-mono uppercase text-slate-400">Office Hours</div>
+                                        <div class="font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Mon – Sat: 10:00 AM – 7:00 PM IST</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social Profiles Row -->
+                            <div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+                                <div class="text-xs font-mono uppercase text-slate-400 mb-3">Connect on Social Networks</div>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://www.linkedin.com/in/prince-patel-141700354" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-3 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-600 dark:text-blue-400 text-xs font-bold text-center hover:bg-blue-600 hover:text-white transition">
+                                        <i class="fa-brands fa-linkedin mr-1.5"></i>LinkedIn
+                                    </a>
+                                    <a href="https://github.com/princepatel-patelji" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-500/10 border border-slate-500/30 text-slate-700 dark:text-slate-200 text-xs font-bold text-center hover:bg-slate-800 hover:text-white transition">
+                                        <i class="fa-brands fa-github mr-1.5"></i>GitHub
+                                    </a>
+                                    <a href="https://www.instagram.com/i_t_s__official__prince" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-3 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-600 dark:text-pink-400 text-xs font-bold text-center hover:bg-pink-600 hover:text-white transition">
+                                        <i class="fa-brands fa-instagram mr-1.5"></i>Instagram
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Calendar Discovery Call CTA -->
+                            <div class="p-4 rounded-2xl bg-brand-gradient-subtle border border-indigo-500/30 flex items-center justify-between gap-4">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-900 dark:text-white">Prefer a Scheduled Call?</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">Book a 15-min project discovery slot.</div>
+                                </div>
+                                <button onclick="openCalendarModal()" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-500 transition shrink-0">
+                                    <i class="fa-regular fa-calendar-check mr-1.5"></i>Book Slot
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Lead Capture Form (Formspree / Netlify Ready + WhatsApp Direct Fallback) -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-xl relative">
+                            <h3 class="font-display font-bold text-2xl text-slate-900 dark:text-white mb-2">
+                                Send Your Project Brief
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6">
+                                Fill out the details below. Pre-configured for Formspree/Netlify Forms and includes instant WhatsApp &amp; Email dispatch.
+                            </p>
+
+                            <form id="mainContactForm" onsubmit="handleContactSubmit(event)" name="prince-portfolio-contact" data-netlify="true" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="clientName" class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Your Name *</label>
+                                        <input type="text" id="clientName" name="name" required placeholder="e.g., Rajesh Sharma" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                                    </div>
+                                    <div>
+                                        <label for="clientEmail" class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Email Address *</label>
+                                        <input type="email" id="clientEmail" name="email" required placeholder="you@company.com" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="clientPhone" class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Phone / WhatsApp Number *</label>
+                                        <input type="tel" id="clientPhone" name="phone" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                                    </div>
+                                    <div>
+                                        <label for="clientService" class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Service Needed</label>
+                                        <select id="clientService" name="service" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500">
+                                            <option value="Professional Business Website">Professional Business Website</option>
+                                            <option value="Custom Web Tool / Calculator">Custom Web Tool / Calculator</option>
+                                            <option value="Web-to-Mobile APK Conversion">Web-to-Mobile APK Conversion</option>
+                                            <option value="CRM & Tech Support">CRM &amp; Tech Support</option>
+                                            <option value="Excel + AI Dashboard">Excel + AI Dashboard</option>
+                                            <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="clientBrief" class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Tell Me About Your Project *</label>
+                                    <textarea id="clientBrief" name="project_brief" required rows="4" placeholder="Describe your business, goals, timeline, or features you need..." class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-teal-500"></textarea>
+                                </div>
+
+                                <!-- File Upload Field (Reference Screenshot / Brief Document) -->
+                                <div>
+                                    <label for="clientAttachment" class="block text-xs font-mono uppercase text-slate-400 mb-1.5">Attach Project Reference / Document (Optional)</label>
+                                    <input type="file" id="clientAttachment" name="attachment" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-teal-500/15 file:text-teal-600 dark:file:text-teal-300 hover:file:bg-teal-500/25 cursor-pointer">
+                                </div>
+
+                                <!-- Submit & Direct WhatsApp Option -->
+                                <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                                    <button type="submit" class="flex-1 py-4 px-6 rounded-xl font-display font-bold text-sm sm:text-base text-white bg-brand-gradient shadow-lg shadow-indigo-500/25 hover:opacity-95 transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                        <span>Send Project Inquiry</span>
+                                    </button>
+                                    <button type="button" onclick="sendBriefViaWhatsApp()" class="py-4 px-5 rounded-xl font-bold text-xs sm:text-sm bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center justify-center gap-2">
+                                        <i class="fa-brands fa-whatsapp text-base"></i>
+                                        <span>Send Instantly via WhatsApp</span>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- Animated SVG Success Confirmation State (Hidden by default) -->
+                            <div id="contactSuccessBox" class="hidden mt-6 p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3">
+                                <div class="w-14 h-14 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center text-2xl mx-auto shadow-lg">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Inquiry Logged Successfully!</h4>
+                                <p id="contactSuccessText" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300"></p>
+                                <div class="flex justify-center gap-3 pt-2">
+                                    <button onclick="sendBriefViaWhatsApp()" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950">
+                                        Open in WhatsApp Now
+                                    </button>
+                                    <button onclick="resetContactForm()" class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-300 dark:border-slate-700">
+                                        Send Another Message
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================== -->
+    <!-- 10. FOOTER                                                                 -->
+    <!-- ========================================================================== -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800/80">
+                
+                <!-- Brand Col -->
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-lg bg-brand-gradient flex items-center justify-center font-display font-extrabold text-white">P.</div>
+                        <span class="font-display font-extrabold text-xl text-white">Prince Patel<span class="text-teal-400">.</span></span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
+                        Fast, Affordable Web &amp; Digital Solutions. Helping small businesses in Lucknow and across India launch responsive websites, custom calculators, Android APKs, and organized CRM workflows.
+                    </p>
+                    <div class="text-xs font-mono text-teal-400">
+                        <i class="fa-solid fa-phone mr-1.5"></i>+91 7268842331 &bull; Lucknow, UP, India
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="md:col-span-4 grid grid-cols-2 gap-4 text-xs sm:text-sm">
+                    <div class="space-y-2">
+                        <div class="font-mono text-xs uppercase text-white tracking-wider">Navigation</div>
+                        <ul class="space-y-1.5">
+                            <li><a href="#about" class="hover:text-teal-400 transition">About Prince</a></li>
+                            <li><a href="#services" class="hover:text-teal-400 transition">Services &amp; Stack</a></li>
+                            <li><a href="#projects" class="hover:text-teal-400 transition">Featured Projects</a></li>
+                            <li><a href="#leaderboard" class="hover:text-teal-400 transition">Game Leaderboard</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="font-mono text-xs uppercase text-white tracking-wider">Resources</div>
+                        <ul class="space-y-1.5">
+                            <li><a href="#gallery" class="hover:text-teal-400 transition">Visual Gallery</a></li>
+                            <li><a href="#blog" class="hover:text-teal-400 transition">BCA &amp; Dev Blog</a></li>
+                            <li><button onclick="openResumeModal()" class="hover:text-teal-400 transition">Printable Resume</button></li>
+                            <li><button onclick="openDevDocsModal()" class="hover:text-teal-400 transition">Style Guide &amp; Docs</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Live Projects & Socials -->
+                <div class="md:col-span-3 space-y-3">
+                    <div class="font-mono text-xs uppercase text-white tracking-wider">Live Deployments</div>
+<div class="font-mono text-xs uppercase text-white tracking-wider">Live Deployments</div>
+                    <div class="flex flex-col gap-2 text-xs">
+                        <a href="https://princepatel-patelji.github.io/Matrix-Calculator/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-teal-500 text-slate-200 flex items-center justify-between">
+                            <span>Interactive Matrix Calculator</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-teal-400"></i>
+                        </a>
+                        <a href="https://princepatel-patelji.github.io/My-First-Calculator-/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-indigo-500 text-slate-200 flex items-center justify-between">
+                            <span>Realistic 3D Pro Calculator</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-indigo-400"></i>
+                        </a>
+                        <a href="https://princepatel-patelji.github.io/Number-Game-/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-slate-200 flex items-center justify-between">
+                            <span>Number Guessing Game</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-amber-400"></i>
+                        </a>
+                    </div>
+            
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <p>&copy; 2026 Prince Patel. All Rights Reserved. Engineered with clean HTML5, Tailwind CSS, Three.js &amp; GSAP.</p>
+                <div class="flex items-center gap-4">
+                    <a href="https://github.com/princepatel-patelji" target="_blank" rel="noopener noreferrer" class="hover:text-white" aria-label="GitHub"><i class="fa-brands fa-github text-base"></i></a>
+                    <a href="https://www.linkedin.com/in/prince-patel-141700354" target="_blank" rel="noopener noreferrer" class="hover:text-white" aria-label="LinkedIn"><i class="fa-brands fa-linkedin text-base"></i></a>
+                    <a href="https://www.instagram.com/i_t_s__official__prince" target="_blank" rel="noopener noreferrer" class="hover:text-white" aria-label="Instagram"><i class="fa-brands fa-instagram text-base"></i></a>
+                    <a href="https://wa.me/917268842331" target="_blank" rel="noopener noreferrer" class="hover:text-white" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp text-base"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================== -->
+    <!-- MODALS: CASE STUDY, LIGHTBOX, BLOG READER, RESUME, DEV DOCS & ADD PROJECT  -->
+    <!-- ========================================================================== -->
+
+    <!-- 1. Project Case Study Modal -->
+    <div id="caseStudyModal" class="fixed inset-0 z-[100] hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
+        <div class="glass-panel bg-white dark:bg-slate-900 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 border border-teal-500/30 shadow-2xl relative">
+            <button onclick="closeCaseStudyModal()" class="sticky top-2 float-right w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-rose-500 hover:text-white transition flex items-center justify-center z-10" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="caseStudyModalContent"></div>
+        </div>
+    </div>
+
+    <!-- 2. Gallery Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 z-[110] hidden bg-slate-950/90 backdrop-blur-xl flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Image Lightbox">
+        <div class="max-w-4xl w-full glass-panel bg-slate-900 rounded-3xl p-4 sm:p-6 border border-white/15 relative">
+            <div class="flex items-center justify-between mb-4">
+                <span id="lightboxCategory" class="text-xs font-mono uppercase px-3 py-1 rounded-full bg-teal-500/20 text-teal-300"></span>
+                <div class="flex items-center gap-2">
+                    <button onclick="navigateLightbox(-1)" class="w-9 h-9 rounded-xl bg-slate-800 text-white hover:bg-teal-500 hover:text-slate-950 transition" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="navigateLightbox(1)" class="w-9 h-9 rounded-xl bg-slate-800 text-white hover:bg-teal-500 hover:text-slate-950 transition" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button onclick="closeLightbox()" class="w-9 h-9 rounded-xl bg-rose-500/20 text-rose-400 hover:bg-rose-500 hover:text-white transition" aria-label="Close lightbox"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+            <div id="lightboxVisual"
